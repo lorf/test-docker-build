@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: docker:stable-git
+    environment:
+      BUILD_IMAGE: lorf/test-docker-image
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: |
+        docker run --rm -v "$HOME:$HOME" -u `id -u`:`id -g` -w "$CIRCLE_WORKING_DIRECTORY" -i "$BUILD_IMAGE" make
+        ls -lR csr-spi-ftdi*
