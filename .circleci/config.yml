@@ -9,5 +9,5 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: |
-        docker run --rm -v "$HOME:$HOME" -u `id -u`:`id -g` -w "$CIRCLE_WORKING_DIRECTORY" -i "$BUILD_IMAGE" make
-        ls -lR csr-spi-ftdi*
+          docker run --rm -v "$HOME:$HOME" -u `id -u`:`id -g` -w "$CIRCLE_WORKING_DIRECTORY" -i "$BUILD_IMAGE" make
+          ls -lR csr-spi-ftdi*
