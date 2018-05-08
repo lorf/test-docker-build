@@ -9,7 +9,5 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: |
-          wdir=$(cd "$CIRCLE_WORKING_DIRECTORY" && pwd)
-          echo "Working directory: $wdir"
-          docker run --rm -v "$HOME:$HOME" -u `id -u`:`id -g` -w "$wdir" -i "$BUILD_IMAGE" make
+          docker run --rm -v "$HOME:$HOME" -u `id -u`:`id -g` -w $CIRCLE_WORKING_DIRECTORY -i "$BUILD_IMAGE" make
           ls -lR csr-spi-ftdi*
