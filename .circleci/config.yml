@@ -1,13 +1,11 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: docker:stable-git
+    machine: true
     environment:
       BUILD_IMAGE: lorf/test-docker-image
     steps:
       - checkout
-      - setup_remote_docker
       - run: |
           wdir=$(eval "cd $CIRCLE_WORKING_DIRECTORY && pwd")
           echo "Working directory: $wdir"
